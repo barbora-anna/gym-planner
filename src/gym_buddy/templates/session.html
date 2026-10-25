@@ -1,0 +1,315 @@
+<title>__TITLE__</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap">
+<style>
+/* Layout: one phone-width column; each exercise is a block of set rows, plan on the left, what you did on the right. */
+:root {
+  --bg: #eef0ee;
+  --surface: #fbfcfb;
+  --ink: #1b2422;
+  --muted: #5e6b67;
+  --line: #d3d9d6;
+  --accent: #c8402c;        /* competition-plate red */
+  --accent-ink: #ffffff;
+  --done: #2f7d57;
+  --done-bg: #e2f0e8;
+  --warm-bg: #f3ece0;
+  --warm-ink: #7a5520;
+  --display: "Barlow Condensed", "Arial Narrow", sans-serif;
+  --body: "IBM Plex Sans", system-ui, sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, monospace;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --bg: #121816; --surface: #1a2220; --ink: #e6ebe9; --muted: #96a29e; --line: #2c3633;
+  --accent: #e2604a; --accent-ink: #160b08; --done: #6cc495; --done-bg: #1c3328;
+  --warm-bg: #2f281c; --warm-ink: #e0b878; color-scheme: dark } }
+:root[data-theme="dark"] {
+  --bg: #121816; --surface: #1a2220; --ink: #e6ebe9; --muted: #96a29e; --line: #2c3633;
+  --accent: #e2604a; --accent-ink: #160b08; --done: #6cc495; --done-bg: #1c3328;
+  --warm-bg: #2f281c; --warm-ink: #e0b878; color-scheme: dark }
+
+body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--body); font-size: 15px; line-height: 1.45; }
+.wrap { max-width: 560px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); padding-block: 20px 120px; display: grid; gap: 18px; }
+header h1 { font-family: var(--display); font-weight: 700; font-size: 2.3rem; line-height: 1; margin: 0; letter-spacing: .01em; text-wrap: balance; }
+.meta { color: var(--muted); font-size: .9rem; margin-top: 6px; display: flex; flex-wrap: wrap; gap: 4px 14px; }
+.progress { margin-top: 12px; height: 6px; border-radius: 3px; background: var(--line); overflow: hidden; }
+.progress i { display: block; height: 100%; width: 0; background: var(--done); transition: width .3s; }
+.status { font-size: .85rem; color: var(--muted); margin-top: 8px; }
+.status.warn { color: var(--accent); }
+.rules { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 12px 14px; font-size: .88rem; color: var(--muted); white-space: pre-line; }
+
+.ex { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; overflow: hidden; }
+.ex-head { padding: 12px 14px 8px; display: grid; gap: 2px; }
+.ex-head h2 { font-family: var(--display); font-weight: 700; font-size: 1.45rem; margin: 0; line-height: 1.05; display: flex; gap: 10px; align-items: baseline; }
+.ex-head h2 .n { color: var(--accent); font-size: 1.1rem; }
+.ex-head .tip { color: var(--muted); font-size: .85rem; }
+.sets { display: grid; }
+.set { border-top: 1px solid var(--line); padding: 10px 14px; display: grid; gap: 8px; }
+.set.done { background: var(--done-bg); }
+.set.skipped { opacity: .55; }
+.row1 { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.plan { font-family: var(--mono); font-variant-numeric: tabular-nums; font-size: .95rem; min-width: 7.5em; }
+.plan small { color: var(--muted); font-family: var(--body); font-size: .78rem; margin-left: 4px; }
+.role { border: 1px solid var(--line); background: transparent; color: var(--muted); font: 600 .72rem var(--body); letter-spacing: .06em; text-transform: uppercase; padding: 3px 8px; border-radius: 999px; cursor: pointer; }
+.role[data-role="warmup"] { background: var(--warm-bg); color: var(--warm-ink); border-color: transparent; }
+.role[data-role="working"] { background: var(--ink); color: var(--surface); border-color: transparent; }
+.badge { margin-left: auto; font-size: .78rem; font-weight: 600; color: var(--muted); }
+.set.done .badge { color: var(--done); }
+.row2 { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.field { display: grid; gap: 2px; }
+.field label, .lbl { font-size: .72rem; color: var(--muted); text-transform: uppercase; letter-spacing: .06em; }
+.field input { font: 500 1.05rem var(--mono); font-variant-numeric: tabular-nums; padding: 8px 10px; border: 1px solid var(--line); border-radius: 8px; background: var(--bg); color: var(--ink); width: 100%; box-sizing: border-box; min-width: 0; }
+.rir { display: grid; gap: 4px; }
+.chips { display: grid; grid-template-columns: repeat(6, 1fr); gap: 4px; }
+.chips button { font: 500 .95rem var(--mono); padding: 7px 0; border: 1px solid var(--line); border-radius: 8px; background: var(--bg); color: var(--ink); cursor: pointer; }
+.chips button[aria-pressed="true"] { background: var(--accent); color: var(--accent-ink); border-color: var(--accent); }
+.actions { display: flex; gap: 6px; flex-wrap: wrap; }
+.actions button, .add { font: 600 .85rem var(--body); padding: 8px 12px; border-radius: 8px; border: 1px solid var(--line); background: var(--surface); color: var(--ink); cursor: pointer; }
+.actions .primary { background: var(--ink); color: var(--surface); border-color: var(--ink); }
+.actions .quiet { color: var(--muted); }
+.add { margin: 10px 14px 12px; background: transparent; border-style: dashed; color: var(--muted); }
+.note { margin: 0 14px 12px; display: grid; gap: 2px; }
+.note textarea { font: .9rem var(--body); padding: 8px 10px; border: 1px solid var(--line); border-radius: 8px; background: var(--bg); color: var(--ink); resize: vertical; min-height: 2.4em; }
+button:focus-visible, input:focus-visible, textarea:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+.timer { position: fixed; left: 0; right: 0; bottom: 0; padding: 12px max(16px, env(safe-area-inset-right, 0px)) calc(12px + env(safe-area-inset-bottom, 0px)) max(16px, env(safe-area-inset-left, 0px)); background: var(--ink); color: var(--surface); display: flex; align-items: center; gap: 12px; justify-content: center; font-family: var(--body); z-index: 5; }
+.timer .t { font: 700 1.6rem var(--display); font-variant-numeric: tabular-nums; letter-spacing: .03em; }
+.timer button { font: 600 .85rem var(--body); background: transparent; color: var(--surface); border: 1px solid currentColor; border-radius: 8px; padding: 6px 10px; cursor: pointer; }
+.timer.over .t { color: var(--accent); }
+@media (prefers-reduced-motion: reduce) { .progress i { transition: none; } }
+</style>
+
+<div class="wrap">
+  <header>
+    <h1 id="title"></h1>
+    <div class="meta" id="meta"></div>
+    <div class="progress" aria-hidden="true"><i id="bar"></i></div>
+    <div class="status" id="status">Connecting…</div>
+  </header>
+  <div class="rules" id="rules" hidden></div>
+  <main id="list" style="display:grid;gap:14px"></main>
+</div>
+
+<div class="timer" id="timer" hidden>
+  <span>Rest</span><span class="t" id="tval">0:00</span>
+  <button type="button" id="tadd">+30 s</button>
+  <button type="button" id="tstop">Done</button>
+</div>
+
+<script>
+// Filled in by `gym render`: {session, title, subtitle, dateLabel, notes, exercises: [{ex, name, rest, tip, sets: [{id, role, kg, reps, seconds, rir, label}]}]}
+const DATA = /*__DATA__*/null;
+const SESSION = DATA.session, PLAN = DATA.exercises;
+
+document.getElementById("title").textContent = DATA.title;
+const meta = document.getElementById("meta");
+[DATA.dateLabel, DATA.subtitle].filter(Boolean).forEach(t => { const s = document.createElement("span"); s.textContent = t; meta.appendChild(s); });
+if (DATA.notes) { const r = document.getElementById("rules"); r.textContent = DATA.notes; r.hidden = false; }
+
+const fmt = n => (n == null || n === "") ? "" : String(+n);
+const rirText = r => r == null ? "" : (r % 1 ? `${Math.floor(r)}–${Math.ceil(r)}` : String(r));
+const rows = new Map();          // id -> row data (as stored)
+const planned = new Map();       // id -> {exIndex, ...set}
+let db = null, col = null, canWrite = false;
+
+PLAN.forEach((e, i) => e.sets.forEach(s => planned.set(s.id, { exIndex: i, ...s })));
+const timed = id => { const p = planned.get(id); return p ? p.seconds != null : rows.get(id)?.seconds != null; };
+
+function rowFor(id) {
+  if (rows.has(id)) return rows.get(id);
+  const p = planned.get(id);
+  return { session: SESSION, planned_set_id: id, exercise: PLAN[p.exIndex].ex, status: "pending",
+           weight_kg: null, reps: null, seconds: null, rir: null, role: p.role, note: null };
+}
+
+/* ---------- writes: one at a time per document, coalesced ---------- */
+const pending = new Map(), inflight = new Set(), timers = new Map();
+function save(id, data, delay = 500) {
+  rows.set(id, data);
+  if (!col || !canWrite) return;
+  pending.set(id, data);
+  clearTimeout(timers.get(id));
+  timers.set(id, setTimeout(() => flush(id), delay));
+}
+async function flush(id) {
+  if (inflight.has(id) || !pending.has(id)) return;
+  const data = pending.get(id); pending.delete(id); inflight.add(id);
+  try { await col.doc(id).set(data); setStatus("Saved"); }
+  catch (e) {
+    if (e && e.code === "invalid_argument") { canWrite = false; setStatus("This view can't save changes.", true); }
+    else if (e && e.code === "unavailable") { pending.set(id, pending.get(id) || data); setTimeout(() => flush(id), 1500 + Math.random() * 1000); }
+    else setStatus("Couldn't save: " + (e && e.message || "unknown error"), true);
+  } finally { inflight.delete(id); if (pending.has(id)) flush(id); }
+}
+function setStatus(msg, warn = false) { const s = document.getElementById("status"); s.textContent = msg; s.classList.toggle("warn", warn); }
+
+/* ---------- rendering ---------- */
+const list = document.getElementById("list");
+const setEls = new Map();        // id -> element
+const extraHosts = [];           // per exercise container for sets
+
+function build() {
+  PLAN.forEach((e, i) => {
+    const sec = document.createElement("section"); sec.className = "ex";
+    sec.innerHTML = `<div class="ex-head"><h2><span class="n">${i + 1}</span><span class="nm"></span></h2><div class="tip"></div></div><div class="sets"></div>
+      <button type="button" class="add">+ Add a set</button>
+      <div class="note"><label class="lbl" for="note-${i}">Note</label>
+      <textarea id="note-${i}" rows="1" placeholder="Machine maxed out, felt heavy, anything worth remembering"></textarea></div>`;
+    sec.querySelector(".nm").textContent = e.name;
+    const tip = sec.querySelector(".tip"); if (e.tip) tip.textContent = e.tip; else tip.remove();
+    const host = sec.querySelector(".sets"); extraHosts[i] = host;
+    e.sets.forEach(s => host.appendChild(setEl(s.id)));
+    sec.querySelector(".add").addEventListener("click", () => addExtra(i));
+    const ta = sec.querySelector("textarea");
+    ta.addEventListener("input", () => saveNote(i, ta.value));
+    list.appendChild(sec);
+  });
+  refreshProgress();
+}
+
+function setEl(id) {
+  const el = document.createElement("div"); el.className = "set"; el.dataset.id = id;
+  const measure = timed(id) ? "seconds" : "reps";
+  el.innerHTML = `
+    <div class="row1"><span class="plan"></span><button type="button" class="role"></button><span class="badge"></span></div>
+    <div class="row2">
+      <div class="field"><label>kg</label><input class="kg" inputmode="decimal" autocomplete="off"></div>
+      <div class="field"><label>${measure === "seconds" ? "sec" : "reps"}</label><input class="ms" inputmode="numeric" autocomplete="off"></div>
+    </div>
+    <div class="rir"><span class="lbl">Reps left (RIR)</span><div class="chips">${[0,1,2,3,4,5].map(n => `<button type="button" data-rir="${n}" aria-pressed="false">${n === 5 ? "5+" : n}</button>`).join("")}</div></div>
+    <div class="actions"></div>`;
+  const kg = el.querySelector(".kg"), ms = el.querySelector(".ms");
+  kg.setAttribute("aria-label", "kg"); ms.setAttribute("aria-label", measure);
+  kg.addEventListener("input", () => edit(id, { weight_kg: num(kg.value) }));
+  ms.addEventListener("input", () => edit(id, { [measure]: int(ms.value) }));
+  el.querySelectorAll(".chips button").forEach(b => b.addEventListener("click", () => {
+    const r = rowFor(id), v = +b.dataset.rir; edit(id, { rir: r.rir === v ? null : v }, 0);
+  }));
+  el.querySelector(".role").addEventListener("click", () => {
+    const r = rowFor(id), next = r.role === "warmup" ? "working" : r.role === "working" ? (planned.has(id) ? "warmup" : null) : "warmup";
+    edit(id, { role: next }, 0);
+  });
+  setEls.set(id, el); paint(id);
+  return el;
+}
+
+function paint(id) {
+  const el = setEls.get(id); if (!el) return;
+  const r = rowFor(id), p = planned.get(id), measure = timed(id) ? "seconds" : "reps";
+  el.classList.toggle("done", r.status === "done");
+  el.classList.toggle("skipped", r.status === "skipped");
+  const plan = el.querySelector(".plan");
+  if (p) {
+    const amount = p.label && p.label !== "optional" ? p.label : (p.seconds != null ? `${p.seconds} s` : p.reps);
+    const load = p.kg != null ? `${fmt(p.kg)} × ` : "";
+    const extra = (p.role === "working" && p.rir != null ? `@${rirText(p.rir)}` : "") + (p.label === "optional" ? " optional" : "");
+    plan.textContent = `${load}${amount}`;
+    if (extra) { const sm = document.createElement("small"); sm.textContent = extra; plan.appendChild(sm); }
+  } else plan.innerHTML = `<small style="margin:0">Extra set</small>`;
+  const role = el.querySelector(".role");
+  role.dataset.role = r.role || ""; role.textContent = r.role === "warmup" ? "Warm-up" : r.role === "working" ? "Working" : "Role?";
+  role.setAttribute("aria-label", "Set type: " + role.textContent + ". Tap to change.");
+  el.querySelector(".badge").textContent = r.status === "done" ? "Done" : r.status === "skipped" ? "Skipped" : "";
+  const kg = el.querySelector(".kg"), ms = el.querySelector(".ms");
+  if (document.activeElement !== kg) kg.value = fmt(r.weight_kg);
+  if (document.activeElement !== ms) ms.value = fmt(r[measure]);
+  kg.placeholder = p ? fmt(p.kg) : ""; ms.placeholder = p ? fmt(p[measure]) : "";
+  el.querySelectorAll(".chips button").forEach(b => b.setAttribute("aria-pressed", String(r.rir != null && (+b.dataset.rir === r.rir || (b.dataset.rir === "5" && r.rir >= 5)))));
+  el.querySelector(".rir").hidden = r.role === "warmup" || measure === "seconds";
+  const acts = el.querySelector(".actions"); acts.innerHTML = "";
+  const btn = (txt, cls, fn) => { const b = document.createElement("button"); b.type = "button"; b.textContent = txt; if (cls) b.className = cls; b.addEventListener("click", fn); acts.appendChild(b); };
+  if (r.status === "done" || r.status === "skipped") btn("Undo", "quiet", () => edit(id, { status: "pending" }, 0));
+  else {
+    if (p) btn("As planned", "primary", () => { edit(id, { weight_kg: p.kg, [measure]: p[measure], status: "done" }, 0); startRest(id); });
+    btn("Done", p ? "" : "primary", () => {
+      const cur = rowFor(id);
+      edit(id, { status: "done", weight_kg: cur.weight_kg ?? (p ? p.kg : null), [measure]: cur[measure] ?? (p ? p[measure] : null) }, 0); startRest(id);
+    });
+    btn("Skip", "quiet", () => edit(id, { status: "skipped" }, 0));
+    if (!p) btn("Remove", "quiet", () => removeExtra(id));
+  }
+}
+
+const num = v => { const s = String(v).replace(",", ".").trim(); if (s === "") return null; const n = +s; return isFinite(n) && n >= 0 ? n : null; };
+const int = v => { const n = num(v); return n == null ? null : Math.round(n); };
+
+function edit(id, patch, delay) {
+  const next = { ...rowFor(id), ...patch };
+  save(id, next, delay); paint(id); refreshProgress();
+}
+
+function addExtra(i) {
+  const id = crypto.randomUUID();
+  const data = { session: SESSION, planned_set_id: null, exercise: PLAN[i].ex, status: "pending",
+                 weight_kg: null, reps: null, seconds: null, rir: null, role: null, note: null };
+  rows.set(id, data); extraHosts[i].appendChild(setEl(id)); save(id, data, 0);
+}
+async function removeExtra(id) {
+  rows.delete(id); pending.delete(id); setEls.get(id)?.remove(); setEls.delete(id);
+  if (col && canWrite) { try { await col.doc(id).delete(); } catch (e) { setStatus("Couldn't remove the set.", true); } }
+  refreshProgress();
+}
+
+/* notes live in their own collection */
+const noteTimers = [];
+function saveNote(i, text) {
+  clearTimeout(noteTimers[i]);
+  noteTimers[i] = setTimeout(async () => {
+    if (!db || !canWrite) return;
+    try { await db.collection("notes").doc(SESSION + "__" + PLAN[i].ex.replace(":", "__")).set({ session: SESSION, exercise: PLAN[i].ex, note: text }); setStatus("Saved"); }
+    catch (e) { setStatus("Couldn't save the note.", true); }
+  }, 700);
+}
+
+function refreshProgress() {
+  const work = [...planned].filter(([, p]) => p.role === "working").map(([id]) => id);
+  const done = work.filter(id => rowFor(id).status === "done").length;
+  document.getElementById("bar").style.width = (work.length ? 100 * done / work.length : 0) + "%";
+}
+
+/* ---------- rest timer ---------- */
+let tEnd = 0, tTick = null, wake = null;
+function startRest(id) {
+  const r = rowFor(id); if (r.role === "warmup") return;
+  const ex = PLAN.find(e => e.ex === r.exercise); tEnd = Date.now() + (ex ? ex.rest : 120) * 1000;
+  document.getElementById("timer").hidden = false; tick(); clearInterval(tTick); tTick = setInterval(tick, 500);
+  if (!wake && navigator.wakeLock) navigator.wakeLock.request("screen").then(w => { wake = w; w.addEventListener("release", () => wake = null); }).catch(() => {});
+}
+function tick() {
+  const s = Math.round((tEnd - Date.now()) / 1000), a = Math.abs(s);
+  document.getElementById("tval").textContent = (s < 0 ? "+" : "") + Math.floor(a / 60) + ":" + String(a % 60).padStart(2, "0");
+  document.getElementById("timer").classList.toggle("over", s < 0);
+}
+document.getElementById("tadd").addEventListener("click", () => { tEnd += 30000; tick(); });
+document.getElementById("tstop").addEventListener("click", () => { clearInterval(tTick); document.getElementById("timer").hidden = true; });
+
+/* ---------- storage ---------- */
+build();
+(async () => {
+  db = window.claude?.use ? await window.claude.use("db").catch(() => null) : null;
+  if (!db) { setStatus("Not saving: open this page in Claude while signed in to keep your sets.", true); return; }
+  const user = await window.claude.use("user").catch(() => null);
+  const w = user && user.can ? await Promise.resolve(user.can("data.write")).catch(() => null) : null;
+  canWrite = w !== false;
+  if (!canWrite) setStatus("View only: you can see the plan but not log sets.", true);
+  col = db.collection("sets");
+  col.where("session", "==", SESSION).onSnapshot(snap => {
+    snap.docChanges().forEach(ch => {
+      const id = ch.doc.id;
+      if (ch.type === "removed") { if (!planned.has(id)) { setEls.get(id)?.remove(); setEls.delete(id); } rows.delete(id); paint(id); return; }
+      if (pending.has(id) || inflight.has(id)) return;           // our own unsent edit wins locally
+      const data = ch.doc.data(); rows.set(id, data);
+      if (!setEls.has(id) && !planned.has(id)) {
+        const i = PLAN.findIndex(e => e.ex === data.exercise); if (i >= 0) extraHosts[i].appendChild(setEl(id));
+      } else paint(id);
+    });
+    refreshProgress();
+    if (canWrite) setStatus(snap.metadata.fromCache ? "Loading your sets…" : "Saving as you go");
+  }, () => setStatus("Lost the connection to saved sets. Reload the page.", true));
+  db.collection("notes").where("session", "==", SESSION).onSnapshot(snap => {
+    snap.docs.forEach(d => { const i = PLAN.findIndex(e => e.ex === d.data().exercise); const ta = document.getElementById("note-" + i);
+      if (ta && document.activeElement !== ta) ta.value = d.data().note || ""; });
+  }, () => {});
+})();
+</script>

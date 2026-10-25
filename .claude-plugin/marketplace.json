@@ -1,0 +1,12 @@
+{
+  "name": "gym-planner",
+  "description": "A strength coach for Claude Code.",
+  "owner": {"name": "barboraanna"},
+  "plugins": [
+    {
+      "name": "gym-planner",
+      "source": "./plugin",
+      "description": "A strength coach that plans your sessions, logs what you did, and progresses you from your own numbers."
+    }
+  ]
+}

@@ -1,0 +1,7 @@
+{
+  "name": "gym-planner",
+  "version": "0.1.0",
+  "description": "A strength coach that plans your sessions, logs what you did, and progresses you from your own numbers.",
+  "author": {"name": "barboraanna"},
+  "license": "MIT"
+}

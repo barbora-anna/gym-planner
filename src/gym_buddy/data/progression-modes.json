@@ -1,0 +1,711 @@
+{
+  "_about": "How each exercise progresses, and so whether 0 kg means a missing load and whether an e1RM may be computed. Only `load` treats 0 kg / None as a missing load and allows an e1RM (the supports_load_estimate exclusions still apply on top). Separate from exercise-map.json (which maps muscles). `overrides` is a list of groups, one per (mode, why): every exercise in a group shares that mode and reason.",
+  "_reviewed_on": "2026-10-17",
+  "_how_lookup_works": "lifter override (profile) > exercise override > name prefix > category. Every catalog category has an entry; there is no fallback. Overrides are keyed 'CATEGORY:NAME' and exist only where a variant differs from what it would otherwise resolve to.",
+  "modes": {
+    "load": "Double progression: reps to the top of the range, then add weight. Timed load sets (carries, weighted planks) keep the duration and add load. 0 kg = load missing.",
+    "reps": "Add reps up to a ceiling, then a harder variation or a switch to load. 0 kg = no added load, a complete set. No e1RM.",
+    "hold": "Add seconds up to a ceiling, then a harder variation or load. Timed sets are never hard sets. 0 kg = no added load. No e1RM.",
+    "none": "Maintain; the Coach may plan it and next time is 'as last time' (dead bugs, mobility, warm-ups, conditioning, cardio). 0 kg = no added load. No e1RM."
+  },
+  "categories": {
+    "BANDED_EXERCISES": {
+      "mode": "reps",
+      "why": "band tension isn't kg; progress reps, then a heavier band"
+    },
+    "BATTLE_ROPE": {
+      "mode": "none",
+      "why": "conditioning intervals, not a strength progression"
+    },
+    "BENCH_PRESS": {
+      "mode": "load",
+      "why": "barbell/dumbbell/machine presses"
+    },
+    "BIKE": {
+      "mode": "none",
+      "why": "cardio: recovery context only"
+    },
+    "BIKE_OUTDOOR": {
+      "mode": "none",
+      "why": "cardio: recovery context only"
+    },
+    "CALF_RAISE": {
+      "mode": "load",
+      "why": "gym calf work is mostly machine/loaded; bodyweight variants overridden"
+    },
+    "CARDIO": {
+      "mode": "none",
+      "why": "conditioning, incl. its WEIGHTED_* twins"
+    },
+    "CARRY": {
+      "mode": "load",
+      "why": "progress the implement at a fixed distance/time"
+    },
+    "CHOP": {
+      "mode": "load",
+      "why": "named chops are cable/band-station lifts; bodyweight twins overridden"
+    },
+    "CORE": {
+      "mode": "reps",
+      "why": "mostly dynamic bodyweight/Pilates; reps mistakes cost least"
+    },
+    "CRUNCH": {
+      "mode": "reps",
+      "why": "bodyweight crunches; cable crunches and WEIGHTED_* overridden"
+    },
+    "CURL": {
+      "mode": "load",
+      "why": "all loaded curls"
+    },
+    "DEADLIFT": {
+      "mode": "load",
+      "why": "all loaded hinges"
+    },
+    "ELLIPTICAL": {
+      "mode": "none",
+      "why": "cardio"
+    },
+    "FLOOR_CLIMB": {
+      "mode": "none",
+      "why": "cardio"
+    },
+    "FLYE": {
+      "mode": "load",
+      "why": "dumbbell/cable/machine flyes"
+    },
+    "HIP_RAISE": {
+      "mode": "reps",
+      "why": "most names are bodyweight bridges; barbell thrusts and WEIGHTED_* overridden"
+    },
+    "HIP_STABILITY": {
+      "mode": "none",
+      "why": "activation/motor-control drills; machine/cable abduction-adduction overridden"
+    },
+    "HIP_SWING": {
+      "mode": "load",
+      "why": "kettlebell/dumbbell swings: heavier bell"
+    },
+    "HYPEREXTENSION": {
+      "mode": "reps",
+      "why": "bodyweight back extensions/supermans; WEIGHTED_* = plate held"
+    },
+    "INDOOR_BIKE": {
+      "mode": "none",
+      "why": "cardio"
+    },
+    "INDOOR_ROW": {
+      "mode": "none",
+      "why": "cardio (rowing machine)"
+    },
+    "LADDER": {
+      "mode": "none",
+      "why": "agility drills"
+    },
+    "LATERAL_RAISE": {
+      "mode": "load",
+      "why": "dumbbell/cable raises; gymnastics oddities overridden"
+    },
+    "LEG_CURL": {
+      "mode": "load",
+      "why": "machine curls and barbell good mornings"
+    },
+    "LEG_RAISE": {
+      "mode": "reps",
+      "why": "hanging/lying leg raises are bodyweight"
+    },
+    "LUNGE": {
+      "mode": "reps",
+      "why": "plain names are Garmin's bodyweight versions (WEIGHTED_ twins exist); loaded lunges have BARBELL/DUMBBELL names"
+    },
+    "MOVE": {
+      "mode": "none",
+      "why": "mobility, Pilates, breathing"
+    },
+    "OLYMPIC_LIFT": {
+      "mode": "load",
+      "why": "progress the bar; e1RM still excluded"
+    },
+    "PLANK": {
+      "mode": "hold",
+      "why": "static holds; dynamic plank variants overridden to reps"
+    },
+    "PLYO": {
+      "mode": "none",
+      "why": "jumps progress by height/complexity/contacts, not reps or load"
+    },
+    "POSE": {
+      "mode": "none",
+      "why": "yoga"
+    },
+    "PULL_UP": {
+      "mode": "reps",
+      "why": "pull-ups/chin-ups are bodyweight; pulldowns/pullovers overridden"
+    },
+    "PUSH_UP": {
+      "mode": "reps",
+      "why": "bodyweight presses"
+    },
+    "ROW": {
+      "mode": "load",
+      "why": "dumbbell/barbell/cable rows; inverted/ring rows overridden"
+    },
+    "RUN": {
+      "mode": "none",
+      "why": "cardio: recovery context only"
+    },
+    "RUN_INDOOR": {
+      "mode": "none",
+      "why": "cardio"
+    },
+    "SANDBAG": {
+      "mode": "load",
+      "why": "a real external load"
+    },
+    "SHOULDER_PRESS": {
+      "mode": "load",
+      "why": "loaded presses; inverted (pike) presses overridden"
+    },
+    "SHOULDER_STABILITY": {
+      "mode": "reps",
+      "why": "prehab raises/rotations; cable/dumbbell rotations overridden"
+    },
+    "SHRUG": {
+      "mode": "load",
+      "why": "loaded shrugs/upright rows; scapular drills overridden"
+    },
+    "SIT_UP": {
+      "mode": "reps",
+      "why": "bodyweight sit-ups"
+    },
+    "SLED": {
+      "mode": "load",
+      "why": "plates on the sled at a fixed distance"
+    },
+    "SLEDGE_HAMMER": {
+      "mode": "none",
+      "why": "conditioning"
+    },
+    "SQUAT": {
+      "mode": "load",
+      "why": "barbell/dumbbell/machine squats; bodyweight variants overridden"
+    },
+    "STAIR_STEPPER": {
+      "mode": "none",
+      "why": "cardio"
+    },
+    "SUSPENSION": {
+      "mode": "reps",
+      "why": "TRX bodyweight: reps, then a harder angle"
+    },
+    "TIRE": {
+      "mode": "reps",
+      "why": "fixed, usually unknown tire weight"
+    },
+    "TOTAL_BODY": {
+      "mode": "none",
+      "why": "burpee-type conditioning"
+    },
+    "TRICEPS_EXTENSION": {
+      "mode": "load",
+      "why": "loaded extensions/pressdowns; bodyweight dips overridden"
+    },
+    "WARM_UP": {
+      "mode": "none",
+      "why": "warm-up and stretching"
+    }
+  },
+  "prefix_rules": [
+    {
+      "prefix": "WEIGHTED_",
+      "mode": "load",
+      "except_categories": [
+        "CARDIO",
+        "PLYO",
+        "TOTAL_BODY"
+      ],
+      "why": "Garmin's name for a movement's loaded twin (Q6): the name asserts a load, so 0 kg is missing. Conditioning and jump twins stay none."
+    }
+  ],
+  "overrides": [
+    {
+      "mode": "hold",
+      "why": "a static plank, timed",
+      "exercises": [
+        "BANDED_EXERCISES:PLANK"
+      ]
+    },
+    {
+      "mode": "hold",
+      "why": "isometric press against pins; the load isn't the progression variable",
+      "exercises": [
+        "BENCH_PRESS:ISOMETRIC_BARBELL_BENCH_PRESS"
+      ]
+    },
+    {
+      "mode": "hold",
+      "why": "static hold (L-sit / lever), timed",
+      "exercises": [
+        "CORE:HANGING_L_SIT",
+        "CORE:L_SIT",
+        "CORE:MODIFIED_FRONT_LEVER",
+        "CORE:RING_L_SIT"
+      ]
+    },
+    {
+      "mode": "hold",
+      "why": "static back-extension hold, timed",
+      "exercises": [
+        "HYPEREXTENSION:STATIC_BACK_EXTENSION"
+      ]
+    },
+    {
+      "mode": "hold",
+      "why": "wall sit, timed",
+      "exercises": [
+        "SQUAT:BODY_WEIGHT_WALL_SQUAT"
+      ]
+    },
+    {
+      "mode": "hold",
+      "why": "static TRX hold, timed",
+      "exercises": [
+        "SUSPENSION:PLANK",
+        "SUSPENSION:REVERSE_PLANK",
+        "SUSPENSION:SIDE_PLANK"
+      ]
+    },
+    {
+      "mode": "load",
+      "why": "named load: cable, kettlebell, plate, get-up or 'with weights'",
+      "exercises": [
+        "CORE:ALTERNATING_PLATE_REACH",
+        "CORE:BICEP_CURL_WITH_LEG_EXTENSION_WITH_WEIGHTS",
+        "CORE:CABLE_CORE_PRESS",
+        "CORE:CABLE_SIDE_BEND",
+        "CORE:HALF_TURKISH_GET_UP",
+        "CORE:KETTLEBELL_WINDMILL",
+        "CORE:LOWER_LIFT_WITH_WEIGHTS",
+        "CORE:OVERHEAD_WALK",
+        "CORE:ROWING_1_WITH_WEIGHTS",
+        "CORE:ROWING_2_WITH_WEIGHTS",
+        "CORE:SCISSORS_WITH_WEIGHTS",
+        "CORE:SINGLE_LEG_STRETCH_WITH_WEIGHTS",
+        "CORE:TURKISH_GET_UP"
+      ]
+    },
+    {
+      "mode": "load",
+      "why": "cable, dumbbell or medicine-ball crunch: a real external load",
+      "exercises": [
+        "CRUNCH:CABLE_CRUNCH",
+        "CRUNCH:FOAM_ROLLER_REVERSE_CRUNCH_WITH_DUMBBELL",
+        "CRUNCH:FOAM_ROLLER_REVERSE_CRUNCH_WITH_MEDICINE_BALL",
+        "CRUNCH:KNEELING_CABLE_CRUNCH",
+        "CRUNCH:KNEELING_OBLIQUE_CABLE_CRUNCH",
+        "CRUNCH:STANDING_CABLE_CRUNCH"
+      ]
+    },
+    {
+      "mode": "load",
+      "why": "barbell hip thrust or kettlebell swing: a real external load",
+      "exercises": [
+        "HIP_RAISE:BARBELL_HIP_THRUST_ON_FLOOR",
+        "HIP_RAISE:BARBELL_HIP_THRUST_WITH_BENCH",
+        "HIP_RAISE:KETTLEBELL_SWING"
+      ]
+    },
+    {
+      "mode": "load",
+      "why": "machine or cable abduction/adduction: a real external load",
+      "exercises": [
+        "HIP_STABILITY:STANDING_ADDUCTION",
+        "HIP_STABILITY:STANDING_CABLE_HIP_ABDUCTION",
+        "HIP_STABILITY:STANDING_HIP_ABDUCTION"
+      ]
+    },
+    {
+      "mode": "load",
+      "why": "dumbbell row misfiled under HYPEREXTENSION",
+      "exercises": [
+        "HYPEREXTENSION:ONE_ARM_ONE_LEG_ROW"
+      ]
+    },
+    {
+      "mode": "load",
+      "why": "kettlebell or medicine ball held: a real external load",
+      "exercises": [
+        "LEG_RAISE:KETTLEBELL_LEG_RAISES",
+        "LEG_RAISE:MEDICINE_BALL_LEG_DROPS"
+      ]
+    },
+    {
+      "mode": "load",
+      "why": "named load: barbell, dumbbell or an overhead/pressed implement",
+      "exercises": [
+        "LUNGE:ALTERNATING_BARBELL_FORWARD_LUNGE",
+        "LUNGE:ALTERNATING_DUMBBELL_LUNGE",
+        "LUNGE:ALTERNATING_DUMBBELL_LUNGE_WITH_REACH",
+        "LUNGE:BACK_FOOT_ELEVATED_DUMBBELL_SPLIT_SQUAT",
+        "LUNGE:BARBELL_BOX_LUNGE",
+        "LUNGE:BARBELL_BULGARIAN_SPLIT_SQUAT",
+        "LUNGE:BARBELL_CROSSOVER_LUNGE",
+        "LUNGE:BARBELL_FRONT_SPLIT_SQUAT",
+        "LUNGE:BARBELL_LUNGE",
+        "LUNGE:BARBELL_REVERSE_LUNGE",
+        "LUNGE:BARBELL_SIDE_LUNGE",
+        "LUNGE:BARBELL_SPLIT_SQUAT",
+        "LUNGE:DUMBBELL_BOX_LUNGE",
+        "LUNGE:DUMBBELL_BULGARIAN_SPLIT_SQUAT",
+        "LUNGE:DUMBBELL_CROSSOVER_LUNGE",
+        "LUNGE:DUMBBELL_DIAGONAL_LUNGE",
+        "LUNGE:DUMBBELL_LUNGE",
+        "LUNGE:DUMBBELL_LUNGE_AND_ROTATION",
+        "LUNGE:DUMBBELL_OVERHEAD_BULGARIAN_SPLIT_SQUAT",
+        "LUNGE:DUMBBELL_OVERHEAD_WALKING_LUNGE",
+        "LUNGE:DUMBBELL_REVERSE_LUNGE",
+        "LUNGE:DUMBBELL_REVERSE_LUNGE_TO_HIGH_KNEE_AND_PRESS",
+        "LUNGE:DUMBBELL_SIDE_LUNGE",
+        "LUNGE:ELEVATED_FRONT_FOOT_BARBELL_SPLIT_SQUAT",
+        "LUNGE:FRONT_FOOT_ELEVATED_DUMBBELL_SPLIT_SQUAT",
+        "LUNGE:GUNSLINGER_LUNGE",
+        "LUNGE:LAWNMOWER_LUNGE",
+        "LUNGE:OFFSET_DUMBBELL_LUNGE",
+        "LUNGE:OFFSET_DUMBBELL_REVERSE_LUNGE",
+        "LUNGE:OVERHEAD_BULGARIAN_SPLIT_SQUAT",
+        "LUNGE:OVERHEAD_DUMBBELL_LUNGE",
+        "LUNGE:OVERHEAD_DUMBBELL_REVERSE_LUNGE",
+        "LUNGE:OVERHEAD_DUMBBELL_SPLIT_SQUAT",
+        "LUNGE:OVERHEAD_LUNGE",
+        "LUNGE:OVERHEAD_LUNGE_WITH_ROTATION",
+        "LUNGE:REVERSE_BARBELL_BOX_LUNGE",
+        "LUNGE:REVERSE_DUMBBELL_BOX_LUNGE",
+        "LUNGE:REVERSE_DUMBBELL_CROSSOVER_LUNGE",
+        "LUNGE:REVERSE_DUMBBELL_DIAGONAL_LUNGE",
+        "LUNGE:SINGLE_ARM_REVERSE_LUNGE_AND_PRESS",
+        "LUNGE:WALKING_BARBELL_LUNGE",
+        "LUNGE:WALKING_DUMBBELL_LUNGE",
+        "LUNGE:WIDE_GRIP_OVERHEAD_BARBELL_SPLIT_SQUAT"
+      ]
+    },
+    {
+      "mode": "load",
+      "why": "pulldown or pullover: a stack or bar load",
+      "exercises": [
+        "PULL_UP:30_DEGREE_LAT_PULLDOWN",
+        "PULL_UP:CLOSE_GRIP_LAT_PULLDOWN",
+        "PULL_UP:EZ_BAR_PULLOVER",
+        "PULL_UP:KNEELING_LAT_PULLDOWN",
+        "PULL_UP:KNEELING_UNDERHAND_GRIP_LAT_PULLDOWN",
+        "PULL_UP:LAT_PULLDOWN",
+        "PULL_UP:REVERSE_GRIP_PULLDOWN",
+        "PULL_UP:STANDING_CABLE_PULLOVER",
+        "PULL_UP:STRAIGHT_ARM_PULLDOWN",
+        "PULL_UP:SWISS_BALL_EZ_BAR_PULLOVER",
+        "PULL_UP:WIDE_GRIP_LAT_PULLDOWN"
+      ]
+    },
+    {
+      "mode": "load",
+      "why": "cable or dumbbell rotation/raise: a real external load",
+      "exercises": [
+        "SHOULDER_STABILITY:90_DEGREE_CABLE_EXTERNAL_ROTATION",
+        "SHOULDER_STABILITY:BENT_ARM_LATERAL_RAISE_AND_EXTERNAL_ROTATION",
+        "SHOULDER_STABILITY:CABLE_EXTERNAL_ROTATION",
+        "SHOULDER_STABILITY:CABLE_INTERNAL_ROTATION",
+        "SHOULDER_STABILITY:DUMBBELL_FACE_PULL_WITH_EXTERNAL_ROTATION",
+        "SHOULDER_STABILITY:LYING_EXTERNAL_ROTATION",
+        "SHOULDER_STABILITY:LYING_INTERNAL_ROTATION",
+        "SHOULDER_STABILITY:SEATED_DUMBBELL_EXTERNAL_ROTATION",
+        "SHOULDER_STABILITY:SEATED_DUMBBELL_INTERNAL_ROTATION"
+      ]
+    },
+    {
+      "mode": "load",
+      "why": "kettlebell or medicine ball held, or Garmin's suffix-form weighted name",
+      "exercises": [
+        "SIT_UP:KETTLEBELL_SIT_UP",
+        "SIT_UP:MEDICINE_BALL_ALTERNATING_V_UP",
+        "SIT_UP:MEDICINE_BALL_SIT_UP",
+        "SIT_UP:MEDICINE_BALL_V_UP",
+        "SIT_UP:THE_TEASER_WEIGHTED"
+      ]
+    },
+    {
+      "mode": "none",
+      "why": "motor-control or warm-up drill; maintained",
+      "exercises": [
+        "BANDED_EXERCISES:DEADBUG",
+        "BANDED_EXERCISES:JUMPING_JACK",
+        "BANDED_EXERCISES:WALL_CRAWL_WITH_EXTERNAL_ROTATION"
+      ]
+    },
+    {
+      "mode": "none",
+      "why": "mobility or motor-control drill; maintained",
+      "exercises": [
+        "CORE:CAT_COW",
+        "CORE:NECK_PULL",
+        "CORE:PELVIC_CLOCKS",
+        "CORE:ROLLING",
+        "CORE:SIDE_BEND_HIGH_WHEELCHAIR",
+        "CORE:SIDE_BEND_LOW_WHEELCHAIR",
+        "CORE:SIDE_BEND_MID_WHEELCHAIR",
+        "CORE:SWAN",
+        "CORE:SWIMMING"
+      ]
+    },
+    {
+      "mode": "none",
+      "why": "mobility drill",
+      "exercises": [
+        "FLYE:ARM_ROTATIONS"
+      ]
+    },
+    {
+      "mode": "none",
+      "why": "yoga-style extension; maintained",
+      "exercises": [
+        "HYPEREXTENSION:COBRA"
+      ]
+    },
+    {
+      "mode": "none",
+      "why": "mobility drill or cardio machine, not a strength progression",
+      "exercises": [
+        "LATERAL_RAISE:ARM_CIRCLES",
+        "LATERAL_RAISE:CALORIE_ROW",
+        "LATERAL_RAISE:POLE_DOUBLE_ARM_OVERHEAD_AND_FORWARD_WHEELCHAIR",
+        "LATERAL_RAISE:POLE_STRAIGHT_ARM_OVERHEAD_WHEELCHAIR",
+        "LATERAL_RAISE:WALL_SLIDE"
+      ]
+    },
+    {
+      "mode": "none",
+      "why": "mobility or warm-up lunge pattern; maintained",
+      "exercises": [
+        "LUNGE:CORE_CONTROL_REAR_LUNGE",
+        "LUNGE:LOW_LUNGE_WITH_ISOMETRIC_ADDUCTION",
+        "LUNGE:LOW_SIDE_TO_SIDE_LUNGE",
+        "LUNGE:LUNGE_MATRIX",
+        "LUNGE:LUNGE_WITH_ARM_REACH",
+        "LUNGE:LUNGE_WITH_DIAGONAL_REACH",
+        "LUNGE:LUNGE_WITH_SIDE_BEND",
+        "LUNGE:REVERSE_LUNGE_WITH_REACH_BACK",
+        "LUNGE:REVERSE_LUNGE_WITH_TWIST_AND_OVERHEAD_REACH",
+        "LUNGE:RUNNERS_LUNGE_TO_BALANCE",
+        "LUNGE:SIDE_LUNGE_SWEEP",
+        "LUNGE:SIDE_LUNGE_TO_CROSSOVER_TAP"
+      ]
+    },
+    {
+      "mode": "none",
+      "why": "medicine-ball throw; power drill, not a progression",
+      "exercises": [
+        "PUSH_UP:MEDICINE_BALL_CHEST_PASS"
+      ]
+    },
+    {
+      "mode": "none",
+      "why": "rowing machine: cardio",
+      "exercises": [
+        "ROW:INDOOR_ROW"
+      ]
+    },
+    {
+      "mode": "none",
+      "why": "sprint: conditioning",
+      "exercises": [
+        "SANDBAG:SPRINT"
+      ]
+    },
+    {
+      "mode": "none",
+      "why": "jump drill; plyometric",
+      "exercises": [
+        "SQUAT:SQUAT_JUMPS_IN_N_OUT"
+      ]
+    },
+    {
+      "mode": "reps",
+      "why": "bodyweight variant (Garmin has a WEIGHTED_ twin) or a misfiled bodyweight move",
+      "exercises": [
+        "CALF_RAISE:3_WAY_CALF_RAISE",
+        "CALF_RAISE:3_WAY_SINGLE_LEG_CALF_RAISE",
+        "CALF_RAISE:DONKEY_CALF_RAISE",
+        "CALF_RAISE:SINGLE_LEG_BENT_KNEE_CALF_RAISE",
+        "CALF_RAISE:SINGLE_LEG_DECLINE_PUSH_UP",
+        "CALF_RAISE:SINGLE_LEG_DONKEY_CALF_RAISE",
+        "CALF_RAISE:SINGLE_LEG_HIP_RAISE_WITH_KNEE_HOLD",
+        "CALF_RAISE:SINGLE_LEG_STANDING_CALF_RAISE"
+      ]
+    },
+    {
+      "mode": "reps",
+      "why": "lifts the body; pinned 0 kg = no added load (m1-design rev 3). A machine user gets a per-lifter override",
+      "exercises": [
+        "CALF_RAISE:STANDING_CALF_RAISE"
+      ]
+    },
+    {
+      "mode": "reps",
+      "why": "bodyweight or fixed medicine-ball chop (WEIGHTED_ twin exists)",
+      "exercises": [
+        "CHOP:CROSS_CHOP_TO_KNEE",
+        "CHOP:HALF_KNEELING_ROTATION",
+        "CHOP:MEDICINE_BALL_WOOD_CHOPS",
+        "CHOP:POWER_SQUAT_CHOPS"
+      ]
+    },
+    {
+      "mode": "reps",
+      "why": "bodyweight gymnastics move misfiled under LATERAL_RAISE",
+      "exercises": [
+        "LATERAL_RAISE:BAR_MUSCLE_UP",
+        "LATERAL_RAISE:MUSCLE_UP",
+        "LATERAL_RAISE:RING_DIP",
+        "LATERAL_RAISE:RING_DIP_KIPPING",
+        "LATERAL_RAISE:RING_MUSCLE_UP",
+        "LATERAL_RAISE:ROPE_CLIMB",
+        "LATERAL_RAISE:SUSPENDED_ROW",
+        "LATERAL_RAISE:WALL_WALK"
+      ]
+    },
+    {
+      "mode": "reps",
+      "why": "band or bodyweight (slider / Swiss ball) curl; no kg load",
+      "exercises": [
+        "LEG_CURL:BAND_GOOD_MORNING",
+        "LEG_CURL:SINGLE_LEG_SLIDING_LEG_CURL",
+        "LEG_CURL:SLIDING_LEG_CURL",
+        "LEG_CURL:SWISS_BALL_HIP_RAISE_AND_LEG_CURL"
+      ]
+    },
+    {
+      "mode": "reps",
+      "why": "dynamic plank variant counted in reps, not a static hold",
+      "exercises": [
+        "PLANK:BEAR_CRAWL",
+        "PLANK:BRIDGE_WITH_GLUTE_LOWER_LIFT",
+        "PLANK:CROSS_BODY_MOUNTAIN_CLIMBER",
+        "PLANK:ELBOW_PLANK_PIKE_JACKS",
+        "PLANK:ELEVATOR_ABS",
+        "PLANK:FULL_PLANK_PASSE_TWIST",
+        "PLANK:INCHING_ELBOW_PLANK",
+        "PLANK:INCHWORM_TO_SIDE_PLANK",
+        "PLANK:LATERAL_ROLL",
+        "PLANK:MEDICINE_BALL_MOUNTAIN_CLIMBER",
+        "PLANK:MODIFIED_MOUNTAIN_CLIMBER_AND_EXTENSION",
+        "PLANK:MOUNTAIN_CLIMBER",
+        "PLANK:MOUNTAIN_CLIMBER_ON_SLIDING_DISCS",
+        "PLANK:MOUNTAIN_CLIMBER_WITH_FEET_ON_BOSU_BALL",
+        "PLANK:MOUNTAIN_CLIMBER_WITH_HANDS_ON_BENCH",
+        "PLANK:MOUNTAIN_CLIMBER_WITH_HANDS_ON_SWISS_BALL",
+        "PLANK:PLANK_JACKS_WITH_FEET_ON_SLIDING_DISCS",
+        "PLANK:PLANK_KNEE_TWIST",
+        "PLANK:PLANK_PIKES",
+        "PLANK:PLANK_PIKE_JUMPS",
+        "PLANK:PLANK_TO_STAND_UP",
+        "PLANK:PLANK_WITH_KNEE_TO_ELBOW",
+        "PLANK:PLANK_WITH_OBLIQUE_CRUNCH",
+        "PLANK:PLYOMETRIC_SIDE_PLANK",
+        "PLANK:REVERSE_PLANK_WITH_LEG_PULL",
+        "PLANK:RING_PLANK_SPRAWLS",
+        "PLANK:ROLLING_SIDE_PLANK",
+        "PLANK:SIDE_KICK_PLANK",
+        "PLANK:SIDE_PLANK_AND_ROW",
+        "PLANK:SIDE_PLANK_TO_PLANK_WITH_REACH_UNDER",
+        "PLANK:SIDE_PLANK_WITH_KNEE_CIRCLE",
+        "PLANK:SIDE_PLANK_WITH_KNEE_TUCK",
+        "PLANK:SIDE_PLANK_WITH_REACH_UNDER",
+        "PLANK:SINGLE_LEG_FLEX_AND_EXTEND",
+        "PLANK:SPIDERMAN_PLANK",
+        "PLANK:STRAIGHT_ARM_PLANK_WITH_SHOULDER_TOUCH",
+        "PLANK:SWISS_BALL_PRONE_JACKKNIFE",
+        "PLANK:TOWEL_PLANK_AND_KNEE_IN",
+        "PLANK:TURKISH_GET_UP_TO_SIDE_PLANK"
+      ]
+    },
+    {
+      "mode": "reps",
+      "why": "inverted, ring or TRX row (bodyweight) or banded face pull (band tension isn't kg)",
+      "exercises": [
+        "ROW:BANDED_FACE_PULLS",
+        "ROW:DECLINE_RING_ROW",
+        "ROW:ELEVATED_FEET_INVERTED_ROW",
+        "ROW:ELEVATED_RING_ROW",
+        "ROW:INVERTED_ROW",
+        "ROW:INVERTED_ROW_WITH_FEET_ON_SWISS_BALL",
+        "ROW:MODIFIED_INVERTED_ROW",
+        "ROW:RING_ROW",
+        "ROW:SINGLE_ARM_INVERTED_ROW",
+        "ROW:SUSPENDED_INVERTED_ROW",
+        "ROW:TOWEL_GRIP_INVERTED_ROW",
+        "ROW:TRX_INVERTED_ROW"
+      ]
+    },
+    {
+      "mode": "reps",
+      "why": "inverted (pike) press: bodyweight",
+      "exercises": [
+        "SHOULDER_PRESS:FLOOR_INVERTED_SHOULDER_PRESS",
+        "SHOULDER_PRESS:INVERTED_SHOULDER_PRESS"
+      ]
+    },
+    {
+      "mode": "reps",
+      "why": "scapular drill, bodyweight (WEIGHTED_ twin exists)",
+      "exercises": [
+        "SHRUG:SCAPULAR_RETRACTION",
+        "SHRUG:SERRATUS_CHAIR_SHRUG",
+        "SHRUG:SERRATUS_SHRUG"
+      ]
+    },
+    {
+      "mode": "reps",
+      "why": "bodyweight squat or single-leg variant (no external load named)",
+      "exercises": [
+        "SQUAT:AIR_SQUAT",
+        "SQUAT:BALANCING_SQUAT",
+        "SQUAT:BENCH_SQUAT_WITH_ROTATIONAL_CHOP",
+        "SQUAT:BOX_STEP_SQUAT",
+        "SQUAT:ELEVATED_SINGLE_LEG_SQUAT",
+        "SQUAT:FIGURE_FOUR_SQUATS",
+        "SQUAT:ONE_LEGGED_SQUAT",
+        "SQUAT:PARTIAL_SINGLE_LEG_SQUAT",
+        "SQUAT:PILATES_PLIE_SQUATS_PARALLEL_TURNED_OUT_FLAT_AND_HEELS",
+        "SQUAT:PISTOL_SQUAT",
+        "SQUAT:PLIE_SLIDES",
+        "SQUAT:PLIE_SQUAT",
+        "SQUAT:PRISONER_SQUAT",
+        "SQUAT:RELEVE_STRAIGHT_LEG_AND_KNEE_BENT_WITH_ONE_LEG_VARIATION",
+        "SQUAT:SINGLE_LEG_BENCH_GET_UP",
+        "SQUAT:SINGLE_LEG_BENCH_SQUAT",
+        "SQUAT:SINGLE_LEG_SQUAT_ON_SWISS_BALL",
+        "SQUAT:SQUATS_WITH_BAND",
+        "SQUAT:SQUAT_AND_SIDE_KICK",
+        "SQUAT:STAGGERED_SQUAT",
+        "SQUAT:STEP_UP",
+        "SQUAT:SUMO_SQUAT_SLIDE_IN",
+        "SQUAT:SUMO_SQUAT_TO_STAND",
+        "SQUAT:SUMO_SQUAT_WITH_ROTATION",
+        "SQUAT:SWISS_BALL_BODY_WEIGHT_WALL_SQUAT",
+        "SQUAT:UNEVEN_SQUAT",
+        "SQUAT:WAIST_SLIMMING_SQUAT"
+      ]
+    },
+    {
+      "mode": "reps",
+      "why": "bodyweight dip or floor extension",
+      "exercises": [
+        "TRICEPS_EXTENSION:BENCH_DIP",
+        "TRICEPS_EXTENSION:BODY_WEIGHT_DIP",
+        "TRICEPS_EXTENSION:INCLINE_DIP",
+        "TRICEPS_EXTENSION:SINGLE_LEG_BENCH_DIP_AND_KICK",
+        "TRICEPS_EXTENSION:SINGLE_LEG_DIP",
+        "TRICEPS_EXTENSION:SUSPENDED_DIP",
+        "TRICEPS_EXTENSION:TABLETOP_DIP",
+        "TRICEPS_EXTENSION:TRICEPS_EXTENSION_ON_FLOOR"
+      ]
+    }
+  ]
+}
