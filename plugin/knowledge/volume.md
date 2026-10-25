@@ -12,8 +12,10 @@
 - Warm-ups, timed holds and missed reps never count.
 - A planned RIR of 3 sits on the hard-set edge: a lifter who ends one rep further from
   failure drops out of the count. Don't rely on RIR-3 sets to reach the weekly band.
-- Low-rep sets count fully if their RIR qualifies. Heavy loads maximise strength but likely
-  build less muscle per set at 2–4RM (Schoenfeld et al. 2021). Mention it if a muscle's
+- Low-rep sets count fully if their RIR qualifies. Heavy loads maximise strength but may
+  build less muscle per set: 8–12RM grew the thigh more than 2–4RM at equal sets
+  (Schoenfeld 2016a), and 7 sets of 3RM matched 3 sets of 10RM for the biceps (Schoenfeld
+  2014). Not every trial agrees (Mangine 2015). Mention it if a muscle's
   volume is mostly low-rep work.
 - Count hard sets, never tonnage.
 
@@ -47,8 +49,9 @@
 
 - More than 2 minutes maximises strength gains in trained lifters, and 60–120 s is enough for
   untrained ones (Grgic 2018). In trained men, 3 minutes beat 1 minute for strength and some
-  hypertrophy outcomes (Schoenfeld 2016). Hypertrophy gains a little from resting more than
+  hypertrophy outcomes (Schoenfeld 2016c). Hypertrophy gains a little from resting more than
   60 s, and nothing past ~90 s (Singer 2024).
+- Heavy sets (1–6 RM, i.e. reps + RIR ≤ 6): 3–5 minutes (ACSM 2009, consensus).
 - Default: at least ~2 minutes for compounds. Shorter rest for isolation is a convention:
   single-joint lifts also kept more reps with longer rest (Senna 2011).
 - Put it in the plan as `rest_s`: the session page prints it in the exercise header.

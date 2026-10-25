@@ -45,6 +45,8 @@ What to cover:
 - **Stick with their exercises, or try something new for a muscle group?** If they might
   want new, offer 2–3 concrete options from `gym find --muscle <m>`, with your pick.
 - How they feel: sleep, soreness, any pain. Recent hard activity if Strava shows some.
+- Their usual scheme for a main lift (sets × reps, how hard), if the profile doesn't have
+  it. The plan starts from it (`progression.md` → "Start from their usual scheme").
 - Any RIR you need for a floor anchor ("Your last hip thrust 135×5 had no RIR. How many
   were left?").
 - Equipment facts you're missing (a bar's weight, a machine's steps), only if the plan
@@ -56,8 +58,9 @@ profile once they confirm it.
 ## 5. Draft
 
 For each exercise, in order:
-1. **Working sets.** Choose reps and target RIR from `progression.md` (by lift type and the
-   lifter's level) and last time's result. Compute the load:
+1. **Working sets.** Choose reps and target RIR from `progression.md`: their usual scheme
+   if they have one, otherwise the rep-range table (by lift, goal and level), then last
+   time's result. Compute the load:
    `gym calc load <reps> --rir <rir> --from <recent set KGxREPS@RIR> --step <their increment>`.
    Use the first (low) value. No usable anchor (new lift, isolation past 10 effective reps,
    under 5 kg, bodyweight-plus or assisted) → progress from last time's load by the
@@ -115,6 +118,7 @@ publish a session over another session's page.
 A compact summary: exercises with working sets (kg × reps @ RIR), warm-ups as one line each,
 the page link, and one or two sentences on what changed from last time and why. Don't
 narrate the checklist. Mention only judgement calls the lifter should know about (an
-assumed RIR, a held load after a grind).
+assumed RIR, a held load after a grind, a departure from their usual scheme, reps added
+because the next load step was too big).
 
 For a week: plan each session the same way, and run `gym volume --plan` with all of them.

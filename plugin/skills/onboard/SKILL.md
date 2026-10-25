@@ -54,7 +54,8 @@ What to cover:
   none for several years; intermediate ≈ 6 months of consistent training; advanced = years.
   Say which you chose and why.
 - **Goals:** in their words (bigger glutes, first bodyweight bench, feel strong). Any target
-  lift or date.
+  lift or date, and **which lifts they want heavier** (these get the strength rep range,
+  `progression.md` → "Rep ranges and effort").
 - **Schedule:** days per week, session length. Agree a split from `session-design.md`:
   suggest one, with the reason.
 - **Equipment:** where they train, which barbells and **what each weighs** (don't assume
@@ -66,6 +67,10 @@ What to cover:
   Record, don't diagnose.
 - **Recent numbers:** for their main lifts, a recent set they're confident in (kg × reps,
   and roughly how many reps they had left).
+- **Usual scheme:** per main lift, how they normally train it (sets × reps, how hard: e.g.
+  "3×3 at 60, last rep tough"). Plans start from it (`progression.md` → "Start from their
+  usual scheme"). If it doesn't fit their recent set (usual 60×3, but a recent 60×2 with 1
+  left), ask which is current; don't settle it silently.
 
 ## 4. Write `athlete/profile.md`
 
@@ -107,7 +112,8 @@ health entries.
 - **Only vague numbers** ("I benched about 50 once"): don't log them. A logged set becomes
   an anchor for loads, and a fuzzy or old number must not set the first plans. Put it in
   the profile's Notes. Their first sessions are planned conservatively (RIR 3) and become
-  the real anchors.
+  the real anchors. This applies only to lifts with no specific recent set. Lifts with one
+  are planned normally from it. Don't write a blanket "RIR 3" into the profile.
 
 ## 6. Teach the logging basics
 

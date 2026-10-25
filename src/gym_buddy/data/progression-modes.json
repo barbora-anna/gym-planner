@@ -3,7 +3,7 @@
   "_reviewed_on": "2026-10-17",
   "_how_lookup_works": "lifter override (profile) > exercise override > name prefix > category. Every catalog category has an entry; there is no fallback. Overrides are keyed 'CATEGORY:NAME' and exist only where a variant differs from what it would otherwise resolve to.",
   "modes": {
-    "load": "Double progression: reps to the top of the range, then add weight. Timed load sets (carries, weighted planks) keep the duration and add load. 0 kg = load missing.",
+    "load": "Load first: keep the reps, add weight when the next step fits (reps only when one step is too big; see progression.md). Timed load sets (carries, weighted planks) keep the duration and add load. 0 kg = load missing.",
     "reps": "Add reps up to a ceiling, then a harder variation or a switch to load. 0 kg = no added load, a complete set. No e1RM.",
     "hold": "Add seconds up to a ceiling, then a harder variation or load. Timed sets are never hard sets. 0 kg = no added load. No e1RM.",
     "none": "Maintain; the Coach may plan it and next time is 'as last time' (dead bugs, mobility, warm-ups, conditioning, cardio). 0 kg = no added load. No e1RM."

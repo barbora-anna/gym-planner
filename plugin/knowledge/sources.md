@@ -18,7 +18,7 @@ add)* are cited, but their identifier wasn't recorded in a review.
 
 ## Effort, failure and RIR
 - Robinson 2024. doi:10.1007/s40279-024-02069-2
-- Refalo 2023. doi:10.1007/s40279-022-01784-y
+- Refalo 2023a. doi:10.1007/s40279-022-01784-y
 - Grgic 2022. doi:10.1016/j.jshs.2021.01.007
 - Halperin 2022, RIR accuracy meta-analysis. doi:10.1007/s40279-021-01559-x
 - Refalo 2024. doi:10.1519/JSC.0000000000004653
@@ -36,19 +36,39 @@ add)* are cited, but their identifier wasn't recorded in a review.
 - Schoenfeld 2017, low vs high load. doi:10.1519/JSC.0000000000002200
 - Lopez 2021. doi:10.1249/MSS.0000000000002585
 - Schoenfeld 2021, the repetition continuum. doi:10.3390/sports9020032
+- Currier 2023, network meta-analysis of load, sets and frequency (178 RCTs). doi:10.1136/bjsports-2023-106807
+- Schoenfeld 2016a, heavy vs moderate loads in trained men. PMID 27928218 (J Sports Sci Med, full text in PMC)
+- Mangine 2015, heavy low-rep vs moderate high-rep in trained men. doi:10.14814/phy2.12472 (Physiol Rep, MEDLINE-indexed from 2016)
+- Schoenfeld 2014, volume-equated 3RM vs 10RM loading. doi:10.1519/JSC.0000000000000480
 
 ## Progression and set structure
 - Plotkin 2022. doi:10.7717/peerj.14142
 - Chaves 2024. doi:10.1055/a-2256-5857
-- Angleri 2017 *(link to add)*
+- Angleri 2017, pyramid and drop-set vs traditional sets. doi:10.1007/s00421-016-3529-1
 - Senna 2011. doi:10.1519/JSC.0b013e318212e23b
-- Androulakis-Korakakis 2021 *(link to add)*
+- Scudese 2015, 5 bench sets at 3RM with 1–5 min rest. doi:10.1097/JSC.0000000000000214
+- Refalo 2023b, velocity and reps across 6 bench sets at RIR 1 and 3. doi:10.1186/s40798-023-00554-y *(Sports Med Open; not MEDLINE-indexed, DOAJ)*
+- Androulakis-Korakakis 2021, a heavy single with and without back-offs in powerlifters. doi:10.3389/fspor.2021.713655 *(Frontiers; not MEDLINE-indexed; Study 3, exploratory, n = 8 per group)*
+- Hickmott 2022, load autoregulation meta-analysis. doi:10.1186/s40798-021-00404-9 *(not MEDLINE-indexed; DOAJ)*
+- Moesgaard 2022, periodization meta-analysis (volume-equated). doi:10.1007/s40279-021-01636-1
+- Harries 2015, linear vs undulating meta-analysis. doi:10.1519/JSC.0000000000000712
+- Schoenfeld 2016b, varied vs constant loading zones in trained men. doi:10.1055/s-0035-1569369
+- Rodríguez-Rosell 2021, linear vs undulating in trained men. doi:10.1016/j.physbeh.2021.113337
+
+## Preference and enjoyment
+- Emanuel 2021, lighter vs heavier loads, subjective measures. doi:10.1123/ijspp.2020-0065
+- Barton 2025, prescribed vs self-selected exercise, affect. doi:10.1016/j.psychsport.2025.102912
+- Steele 2022, self-selected loads scoping review and meta-analysis. doi:10.1007/s40279-022-01717-9
 
 ## Warm-ups
 - Viveiros 2024. doi:10.1016/j.jbmt.2024.08.004
-- Ribeiro 2020. https://ideas.repec.org/a/gam/jijerp/v17y2020i18p6882-d417011.html
+- Ribeiro B 2020. doi:10.3390/ijerph17186882 *(MDPI)*
 - Souza 2024. doi:10.7717/peerj.17347
-- Alves 2021. doi:10.1519/JSC.0000000000003367
+- Ribeiro AS 2014, no warm-up vs specific, general or both before sets to failure. doi:10.2466/25.29.PMS.119c17z7
+- McCrary 2015, systematic review of upper-body warm-ups. doi:10.1136/bjsports-2014-094228
+- Barroso 2013, general warm-up duration and intensity before leg-press 1RM. doi:10.1519/JSC.0b013e3182606cd9
+- Behm 2016, review of stretching effects on performance. doi:10.1139/apnm-2015-0235
+- Kay 2012, review of acute static stretching. doi:10.1249/MSS.0b013e318225cb27
 
 ## Session design, splits and rest
 - Simão 2012 *(link to add)*
@@ -56,7 +76,7 @@ add)* are cited, but their identifier wasn't recorded in a review.
 - Ramos-Campo 2024. doi:10.1519/JSC.0000000000004774
 - Schoenfeld 2019. doi:10.1080/02640414.2018.1555906
 - Grgic 2018. doi:10.1007/s40279-017-0788-x
-- Schoenfeld 2016. doi:10.1519/JSC.0000000000001272
+- Schoenfeld 2016c, 1 vs 3 min rest in trained men. doi:10.1519/JSC.0000000000001272
 - Singer 2024. doi:10.3389/fspor.2024.1429789
 
 ## Recovery, detraining and deloads

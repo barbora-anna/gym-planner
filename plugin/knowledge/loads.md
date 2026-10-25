@@ -9,6 +9,8 @@
   top-of-range compound sets are often past it: their e1RM is a weak basis. Prefer a lower-rep
   set as the `--from` anchor when one exists. If none does, progress that lift by double
   progression from last time's load (see `progression.md`), not from an e1RM.
+- Anchor on the latest **set 1** of a lift. Later sets are fatigued, so their e1RMs read low
+  ("Working-set structure" below).
 - **No RIR = a floor.** A set logged without RIR is treated as taken to failure, so the
   estimate understates the max and loads computed from it come out too light. Before
   prescribing from such a set, ask the lifter how many reps they had left. If they can't
@@ -45,19 +47,32 @@
 - A computed RIR (`gym calc rir`) assumes a fresh set. Later sets at the same load sit
   lower: fatigue isn't modelled.
 
-## Straight sets (the default working structure)
+## Working-set structure
 
-Straight, pyramid and drop sets gave equal results at matched volume (Angleri 2017):
+At one load, every set is harder than the one before, even with 3–5 minutes' rest. Sets to
+failure lose reps from about set 3 (Senna 2011, 10RM; Scudese 2015, 3RM bench). Stopping at
+a target RIR, trained lifters lost about 3 reps (RIR 3) to 5 (RIR 1) from set 1 to set 6 at
+75% 1RM with 4 minutes' rest, roughly half a rep to a rep per set (Refalo 2023b). The drift at a target RIR is untested on heavier, shorter sets. So never print the same reps and RIR on every set.
+
+**Straight sets** are the default. Straight, pyramid and drop sets gave equal results at
+matched volume (Angleri 2017, 50–85% 1RM).
 - Pick the load so **set 1** lands at the target RIR (`gym calc load REPS --rir R --from
-  <recent set> --step <increment>`).
-- Keep that load for every working set and let reps fall by up to 2 across the sets (Senna
-  2011: reps decline from about set 3 even with 3–5 minutes' rest).
-- "Up to 2" is a convention: how far reps fall depends on rest and load.
+  <recent set> --step <increment>`). Keep that load for every working set.
+- Print set 1 with its target (`6 @2`) and later sets with the honest one: the bottom of the
+  reps one lower, the RIR half a point lower but never below 1 (`5–6 @1–2`: `"label": "5–6"`,
+  `"rir": 1.5`; after `3 @1`: `2–3 @1`).
+  The lifter does the full reps while at least 1 is left, otherwise stops one short. The
+  label is a convention: the drift was measured at 75% 1RM, not on heavier sets.
+- Falling 1–2 reps short on later sets is fatigue, not a miss. "Up to 2" is a convention.
 - If a later set would fall below the bottom of the rep range, the load is too heavy: drop
   one increment.
-- No back-off sets for now. The evidence on them is thin: one small exploratory trial
-  (Androulakis-Korakakis 2021, n = 8 per group) compared a heavy single plus back-offs with
-  the single alone, not with straight sets, and no trial compares back-off drop sizes.
+- No back-off sets by default. This is a product simplification, not a finding: set
+  structures did alike (above). No trial compares
+  a top set plus back-offs with straight sets. The one small trial added back-offs to a
+  heavy single and compared that with the single alone (Androulakis-Korakakis 2021, n = 8
+  per group), and no trial compares back-off drop sizes. For volume around heavy work, add
+  moderate-rep accessories for the same muscles, or alternate heavy and moderate days
+  (`progression.md`).
 
 ## Rounding and equipment
 
@@ -106,21 +121,40 @@ step that rounds onto the step before it, or that lands within one increment of 
 (a definition: 3 reps at RIR 1 is ≈ 88–92% 1RM by Brzycki and Epley). A 12-rep set at RIR 1
 is hard, but it isn't near-max.
 
-Basis (small trials that measured performance in that session only, not gains over weeks;
-the evidence is mixed): the step that matters is a heavy one, ~80% of W for 5 reps or fewer.
-In trained men, one warm-up of 5 reps at 80% of W before each exercise gave more total reps
-over 3 sets to failure than 10 reps at 60% or 15 at 40%: clearly on bench press, borderline
-on leg press (Viveiros et al. 2024). Light, few-rep warm-ups weren't enough for squat and
-bench (Ribeiro 2020). Not every trial agrees: a 3-rep warm-up at 90% gave no more squat reps
-than a light one (Souza et al. 2024). A 3-rep step at 90% before sets at 75% 1RM gave more
-reps (Alves 2021). Ramping to ~90% before *near-max* work is a testing convention, not
-trial-tested. Keep reps low as the load rises: the light, high-rep warm-up did worst (Viveiros
-2024). Isolation warm-ups are optional; none of these studies tested isolation. Warm-ups
-also rehearse the lift and check the day's readiness.
+Basis (small trials, mostly young trained men, measuring that session only, not gains over
+weeks; the evidence is mixed):
+- Heavy dynamic warm-ups improve strength and power performance (McCrary 2015, systematic
+  review of upper-body warm-ups).
+- For working-set reps, the one trial with a no-warm-up control found no effect: 4 sets to
+  failure at 80% 1RM in bench press, squat and curl went alike after no warm-up, a specific
+  one, cardio, or both (Ribeiro AS 2014).
+- Among warm-ups, one heavier, low-rep set did best: 5 reps at 80% of W gave more total reps
+  over 3 sets to failure than 10 at 60% or 15 at 40% (Viveiros 2024; clear on bench press,
+  borderline on leg press). On bar speed, 6 reps at 40% of W was the weakest warm-up for
+  squat and bench (Ribeiro B 2020; differences ~0.02 m/s).
+- A heavy set above the working load (90% 1RM before sets at 75% 1RM) is potentiation, not
+  a warm-up step: it gave no more squat reps overall (Souza 2024; more in set 1 only).
+
+So keep reps low as the load rises, and reach a step near 80% of W before barbell work. The
+number of steps, their percentages and reps are conventions. Ramping to ~90% before
+near-max work is a testing convention, not trial-tested. Isolation warm-ups are optional:
+none of these trials tested isolation. Rehearsing the lift and reading the day's readiness
+are practical reasons, untested. No study has tested whether warming up prevents injury in
+lifting (McCrary 2015 found none for the upper body): don't promise it.
 - Keep every step's reps well short of failure. A warm-up must never be a hard set.
 - Rest about 1 minute between early steps, and 2–3 minutes before the first working set
   (convention).
-- Still open: whether one 80% × 5 step is enough before moderate-rep barbell work
-  (Viveiros 2024 tested only that, against our 3–4-step ramp; Ribeiro 2020 found a 2-set
-  warm-up best for bench but a single 80% set for squat), jump sizes for very heavy lifters,
-  and floor-pull ramps beyond the plate floor.
+- A general warm-up (easy cardio) is optional, and never goes in the plan as an exercise. If
+  the lifter does one, keep it easy:
+  - 15 minutes of easy cycling raised leg-press 1RM ~3%, 15 minutes at moderate-hard effort
+    lowered it ~4%, and 5 minutes changed nothing (Barroso 2013, 16 trained men);
+  - before sets to failure at 80% 1RM, cardio made no difference (Ribeiro AS 2014).
+- Static stretching isn't needed. If the lifter likes it: under ~60 s per muscle, then the
+  ramp.
+  - Holds of 60 s or more cost ~4.6%, vs ~1.1% for shorter ones (Behm 2016).
+  - Holds under 30–45 s showed no significant loss (Kay 2012).
+  - With dynamic activity afterwards, there was no clear effect (Behm 2016).
+- Still open: whether one 80% × 5 step is enough before moderate-rep barbell work (every
+  trial above tested single warm-up sets; none compared one step with a multi-step ramp),
+  the rest before the first working set, jump sizes for very heavy lifters, and floor-pull
+  ramps beyond the plate floor.

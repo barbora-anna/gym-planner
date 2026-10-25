@@ -76,7 +76,8 @@ field out.
 Three to five lines, not a report:
 - Per main lift, vs last time (`gym lift <exercise>`): load and reps up, held, or down.
   Mention the e1RM range only if it moved meaningfully.
-- What it means for next time, by the double-progression rule (add load / add reps / hold).
+- What it means for next time, by `progression.md` (load first or double progression: add
+  load / add a rep / hold).
 - The week so far, from `gym volume`, only if something stands out.
 - Health: if they mentioned pain, record it in the profile and say how you'll plan around it.
 

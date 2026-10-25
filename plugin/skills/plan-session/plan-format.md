@@ -8,7 +8,7 @@ misspelled key is an error, so a typo can't silently drop a load.
   "slug": "glutes-full-body",
   "date": "2026-10-24",
   "title": "Glutes & Full Body",
-  "subtitle": "Working sets: aim for 2 reps left",
+  "subtitle": "First working set: aim for 2 reps left",
   "notes": "First working set tells you the day. 4+ reps left: hip thrust 140 kg for the rest. 0 left or reps missed: 125 kg. Otherwise keep the load.",
   "exercises": [
     {
@@ -22,7 +22,7 @@ misspelled key is an error, so a typo can't silently drop a load.
         {"role": "warmup", "weight_kg": 92.5, "reps": 3},
         {"role": "warmup", "weight_kg": 112.5, "reps": 2},
         {"role": "working", "weight_kg": 135, "reps": 5, "rir": 2},
-        {"role": "working", "weight_kg": 135, "reps": 5, "rir": 2}
+        {"role": "working", "weight_kg": 135, "reps": 5, "label": "4–5", "rir": 1.5}
       ]
     },
     {
@@ -46,7 +46,7 @@ misspelled key is an error, so a typo can't silently drop a load.
 | `reps` or `seconds` | Exactly one. |
 | `weight_kg` | Optional (bodyweight, holds). Follows the load conventions in `loads.md`. |
 | `rir` | Target RIR. Every working rep set has one (not needed on timed holds). Use 1.5 for "1–2". |
-| `label` | Optional text shown instead of the reps (`"3–4"`), or `"optional"` to mark a set as skippable. |
+| `label` | Optional text shown instead of the reps (`"3–4"`), or `"optional"` to mark a set as skippable. Later straight sets use it for their honest target (`"4–5"` with `rir` 1.5 after `5 @2`; `loads.md` → "Working-set structure"). |
 | `artifact_url` | Added after publishing. |
 
 `gym render` gives each set a stable id (`<session id>-e<exercise>s<set>`), which the page's
