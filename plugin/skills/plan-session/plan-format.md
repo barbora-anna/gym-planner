@@ -50,5 +50,5 @@ misspelled key is an error, so a typo can't silently drop a load.
 | `artifact_url` | Added after publishing. |
 
 `gym render` gives each set a stable id (`<session id>-e<exercise>s<set>`), which the page's
-saved rows carry. Don't reorder or remove exercises in a plan after it's been published and
-logged against. Plan a new session instead.
+saved rows carry. Once any set is logged on its page, only position-safe edits are allowed: see SKILL.md →
+"Changing a session that's already published".
