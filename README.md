@@ -18,6 +18,20 @@ cd ~/training && claude
 
 What each step does, and how to connect Strava: [`plugin/README.md`](plugin/README.md).
 
+## Built on evidence, not guesses
+
+- **Every training rule cites its research.** Loads, progression, volume, session design
+  and recovery are written down in [`plugin/knowledge/`](plugin/knowledge/), with full
+  references in [`sources.md`](plugin/knowledge/sources.md). Where no study exists, the
+  text says so plainly and treats the rule as a default your own log can override.
+- **Numbers come from code, not from the model.** e1RM, reps in reserve, loads, plate
+  rounding and hard-set counts are computed by `gym` from your logged sets, and estimates
+  are shown as ranges. The Coach makes the decisions, but it never does the arithmetic in
+  its head.
+- **No guessing about your data.** If an exercise name is ambiguous, the Coach lists the
+  candidates and asks you instead of picking one. Logged workouts are never overwritten
+  silently: you see a diff and confirm.
+
 ## Two parts, one repo
 
 - **The Coach** — a Claude Code plugin (`plugin/`): the persona, its skills (onboard, plan
