@@ -41,7 +41,8 @@ stays unknown. Ask in rounds, not all at once:
 2. **Then chat**, at most ~3 open questions per message: name and body stats (whatever
    Strava didn't give); goals in their words; equipment (bars and their weights first:
    Strava can't tell you those); health; likes and dislikes; RIR on the recent Strava sets
-   ("your last bench was 40×5: how many reps were left?"). Without Strava, ask for recent
+   ("your last bench was 40×5: how many reps were left?"). If RIR is new to them, explain it
+   in one line first (step 6) rather than leaving them to guess what you mean. Without Strava, ask for recent
    sets they're sure of instead. Use `AskUserQuestion` whenever a question has fixed answers
    (a split to agree on).
 
@@ -108,7 +109,30 @@ health entries.
   the profile's Notes. Their first sessions are planned conservatively (RIR 3) and become
   the real anchors.
 
-## 6. Hand over
+## 6. Teach the logging basics
+
+Before the first session, make sure they know what to write on the session page and why it
+matters. Keep it short and in plain words, then check RIR with one example; don't lecture.
+
+- **kg:** the load as the profile's conventions count it (dumbbells per hand, plate-loaded
+  machines plates only).
+- **Reps (or seconds):** what they actually did, not what was planned. A missed rep is
+  information, not a failure.
+- **RIR, reps in reserve:** how many more good reps they could have done when they stopped.
+  0 = couldn't do another. An honest estimate is enough: reported RIR is treated as ±1
+  (`loads.md` → "RIR"). Write it right after the set: RIR recalled the next day
+  has never been tested, while RIR given at the set has. Warm-ups need no RIR.
+- **Why RIR matters:** loads are worked out from it. A set without RIR counts as a set to
+  failure (a floor, `loads.md`), so next time's load comes out more cautious than it needs
+  to be.
+- **Notes:** anything a number can't hold: equipment facts ("machine maxes out at 80"),
+  pain, a bad night's sleep.
+
+Then check understanding with one quick question (`AskUserQuestion`), for example: "You
+planned 8 reps, did 8, and could have squeezed out 2 more. What's the RIR?" (2). If they
+miss it, explain once more with their own lift.
+
+## 7. Hand over
 
 One short paragraph: what you understood, the agreed split, and what's next (usually
 "want me to plan your first session?").

@@ -18,6 +18,35 @@ cd ~/training && claude
 
 What each step does, and how to connect Strava: [`plugin/README.md`](plugin/README.md).
 
+## How to read your session page
+
+Each session is a page you open on your phone at the gym: a training diary with the plan
+already written in.
+
+- **The top** has the session's title, a short aim (e.g. "Working sets: aim for 2 reps
+  left"), progress through the working sets, and a box with the session's rules, such as
+  how to adjust the load if the first set feels easy or hard.
+- **Each exercise** has its name, the rest to take between working sets, and sometimes a
+  one-line cue. Below that is one line per set.
+- **On each set line,** the left side is the plan and the right side is where you write
+  what you did:
+  - `W` marks a warm-up; `1`, `2`, `3` number the working sets.
+  - `135 × 5` means 135 kg for 5 reps. `14 × 8–10` means anywhere from 8 to 10 reps.
+    `45 s` is a timed hold.
+  - `@2` is the target **RIR (reps in reserve)**: finish the set with about 2 more reps
+    you could have done. `@1–2` means 1 to 2. Warm-ups have no RIR target.
+  - `optional` means do the set if you feel up to it.
+- **Write down kg, reps (or seconds) and RIR** for each set you do. The faint numbers in
+  empty fields are the targets. Tap a plan to copy it in when you did exactly that. A line
+  with reps filled in counts as logged and turns cyan. Leave lines empty for sets you
+  didn't do.
+- **"+ Add a set"** logs a set that wasn't planned. The note under each exercise is for
+  anything worth remembering ("machine maxes out at 80", "left knee felt off"). The Coach
+  reads these too.
+
+Everything saves as you type. Afterwards, tell the Coach you're done: it reads the page
+back into your log and plans what's next from it.
+
 ## Built on evidence, not guesses
 
 - **Every training rule cites its research.** Loads, progression, volume, session design

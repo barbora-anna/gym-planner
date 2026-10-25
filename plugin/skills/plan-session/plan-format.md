@@ -40,7 +40,7 @@ misspelled key is an error, so a typo can't silently drop a load.
 | `notes` | The rules box at the top: the readiness rule, anything that applies to the whole session. |
 | `exercise` | Exact `CATEGORY:NAME` from `gym find`. |
 | `name` | Display name. Optional, defaults to a readable version of the catalog name. |
-| `rest_s` | Rest after a working set, in seconds. Drives the page's timer (default 120). |
+| `rest_s` | Rest after a working set, in seconds. Printed in the exercise header on the session page (default 120). |
 | `notes` (exercise) | One line under the exercise name. |
 | `role` | `warmup` or `working`. Required. |
 | `reps` or `seconds` | Exactly one. |

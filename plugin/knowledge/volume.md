@@ -51,4 +51,4 @@
   60 s, and nothing past ~90 s (Singer 2024).
 - Default: at least ~2 minutes for compounds. Shorter rest for isolation is a convention:
   single-joint lifts also kept more reps with longer rest (Senna 2011).
-- Put it in the plan as `rest_s`: the session page's timer uses it.
+- Put it in the plan as `rest_s`: the session page prints it in the exercise header.
